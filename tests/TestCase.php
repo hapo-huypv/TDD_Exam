@@ -17,7 +17,7 @@
         /**
          * Set up the test
          */
-        public function setUp()
+        public function setUp() : void
         {
             parent::setUp();
             $this->faker = Faker::create();
@@ -25,7 +25,7 @@
         /**
          * Reset the migrations
          */
-        public function tearDown()
+        public function tearDown() : void
         {
             $this->artisan('migrate:reset');
             parent::tearDown();
