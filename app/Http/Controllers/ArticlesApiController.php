@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\http\Requests\CreateArticleRequest;
 
 class ArticlesApiController extends Controller
 {
@@ -32,9 +33,9 @@ class ArticlesApiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArticleRequest $request)
     {
-        dd('success!');
+        return Article::create($request->all());
     }
 
     /**
@@ -77,8 +78,8 @@ class ArticlesApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        dd('success!');
+        return $article->delete();
     }
 }
