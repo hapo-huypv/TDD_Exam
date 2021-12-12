@@ -34,7 +34,7 @@ class ArticlesApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('success!');
     }
 
     /**
@@ -79,6 +79,6 @@ class ArticlesApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('success!');
     }
 }
