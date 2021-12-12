@@ -17,10 +17,16 @@ class ArticleLengthTest extends TestCase
         $data = [
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph
-          ];
-  
-          $this->post(route('articles.store'), $data)
-            ->assertStatus(442, 'title is too long. Maximum length is 200 characters')
+        ];
+
+        if (strlen($data['title'] > 200)) {
+            $this->post(route('articles.store'), $data)
+            ->assertStatus(422)
             ->assertJson($data); 
+        } else {
+            $this->post(route('articles.store'), $data)
+            ->assertStatus(201)
+            ->assertJson($data); 
+        }
     }
 }

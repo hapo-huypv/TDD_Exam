@@ -16,16 +16,14 @@ class DeleteArticleTest extends TestCase
      */
     public function testDeleteAnArticle()
     {
-        $article = Article::where('title', 'tdd1')->first();
-
-        if (!$article) {
-            $this->delete(route('articles.destroy, [$article]'))
-                ->assertStatus(404, 'Not Found')
-                ->assertJson($data);
+        $article = Article::where('title', 'test')->first();
+        
+        if ($article == null) {
+            $this->assertTrue(false, 'Not Found');
         } else {
-            $this->delete(route('articles.destroy, [$article]'))
-                ->assertStatus(404, 'Article has been deleted')
-                ->assertJson($data);
+            $this->delete(route('articles.destroy', $article))
+                ->assertStatus(200, 'Article has been deleted')
+                ->assertJson($article);
         }
     }
 }

@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use Notifiable, SoftDeletes;
+    use SoftDeletes;
+
+    protected $table = 'articles';
 
     protected $fillable = [
       'title',
