@@ -2,7 +2,9 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class ArticleApiUnitTest extends TestCase
 {
@@ -11,7 +13,7 @@ class ArticleApiUnitTest extends TestCase
      *
      * @return void
      */
-    public function it_can_create_an_article()
+    public function test_it_can_create_an_article()
   {
       $data = [
         'title' => $this->faker->sentence,
